@@ -1,0 +1,159 @@
+<aura:component description="DWCreateAccountForm" implements="flexipage:availableForAllPageTypes,force:hasRecordId"  access="global">
+
+    <!-- Workaround for strange bug where related records are not loaded the first time -->
+    <!-- https://org62.lightning.force.com/one/one.app#/sObject/0D50M000032hJOwSAM/view-->
+    <aura:attribute type="Account" name="acc" access="public"/>
+    <!-- Workaround  -->
+
+    <!-- Instrument information for order -->
+    <!-- <aura:attribute name="instrument" type="DriveWealthJsonInstrument" access="public" />
+    -->
+
+    <!-- debug Apex code -->
+    <aura:attribute name="debug" type="Boolean" default="false" access="global"/>
+    <aura:attribute name="debugClient" type="Boolean" default="false" access="global" />
+
+
+    <!-- Store account if it was successfully created -->
+    <!-- this may not been needed
+    <aura:attribute name="account" type="DriveWealthJsonAccount"  /> -->
+
+    <!-- For using ApexBridge Library -->
+    <!-- VI - utility for making apex controller calls from LC-->
+    <c:ETLC_ApexBridge aura:id="ApexBridge" debugServer="{!v.debug}" debugClient="{!v.debugClient}"/>
+
+    <!-- For using Utils library -->
+    <!-- VI - used to display error messages in the component - also used for logging/messaging -->
+    <c:Utils debugClient="{!v.debugClient}" aura:id="utils"  />
+
+
+
+    <!--Setup initial information for creating an account -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:registerEvent name="cmpEvent" type="c:EvtAccountCreated"  />
+
+
+
+
+    <aura:attribute name="fname" type="String" default="" />
+    <aura:attribute name="lname" type="String" default="" />
+    <aura:attribute name="uname" type="String" default="" />
+    <aura:attribute name="passwd" type="String" default="" />
+    <aura:attribute name="recordId" type="Id" access="global" default="" />
+
+
+    <!-- Input Form using components -->
+    <aura:if isTrue="{!v.acc.sfaip_fsc_dw__DW_Accounts__r}">
+        <lightning:card >
+            <aura:set attribute="title">
+                Drive Wealth Account Details
+            </aura:set>
+        </lightning:card>
+        <aura:set attribute="else">
+            <lightning:card >
+                <aura:set attribute="title">
+                    Create DW Account
+                </aura:set>
+                <p class="slds-p-horizontal--small">
+                    Create DW Account to start placing orders
+                </p>
+            </lightning:card>
+        </aura:set>
+    </aura:if>
+
+    <!-- ui:message will added in this div via createComponents() -->
+    <div aura:id="uiMessage"></div>
+
+    <ui:spinner aura:id="spinner" isVisible="false"/>
+
+
+    <!-- Input Form using components -->
+    <aura:if isTrue="{!v.acc.sfaip_fsc_dw__DW_Accounts__r}">
+        <div  class="slds-box slds-theme--default" aura:id="showAccountForm">
+            <div class="slds-form-element slds-is-required">
+                <div class="slds-form-element__control">
+                    <label class="slds-form-element__label" >DW Account Name</label>
+                    <div class="slds-form-element__control">
+                        <ui:outputText value="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records[0].Name}" />
+
+                    </div>
+                </div>
+                <br/>
+
+                <div class="slds-form-element__control">
+                    <label class="slds-form-element__label" >DW Account Number</label>
+                    <div class="slds-form-element__control">
+                        <ui:outputText value="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records[0].sfaip_fsc_dw__Account_No__c}" />
+
+                    </div>
+                </div>
+                <br/>
+
+                <div class="slds-form-element__control">
+                    <label class="slds-form-element__label" >DW Account Type</label>
+                    <div class="slds-form-element__control">
+
+                        <aura:If isTrue="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records[0].sfaip_fsc_dw__Account_Type__c==1}">
+                            <ui:outputText value="Practice Account" />
+
+                            </aura:If>
+
+                    </div>
+                </div>
+                <br/>
+
+                <div class="slds-form-element__control">
+                    <label class="slds-form-element__label" >When was this created</label>
+                    <div class="slds-form-element__control">
+                        <ui:outputText value="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records[0].sfaip_fsc_dw__Created_When__c}" />
+
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+        </div>
+        <aura:set attribute="else">
+            <div  class="slds-box slds-theme--default" aura:id="createAccountForm">
+                <div class="slds-form-element">
+                    <lightning:input required="true" label="First Name" aura:id="fname" name="fname" type="text" value="{!v.fname}" />
+
+                </div>
+
+                <div class="slds-form-element slds-is-required">
+                    <div class="slds-form-element__control">
+                        <lightning:input required="true" label="Last Name" aura:id="lname" name="lname" type="text" value="{!v.lname}"/>
+
+
+                    </div>
+                </div>
+
+                <div class="slds-form-element slds-is-required">
+                    <div class="slds-form-element__control">
+                        <label class="slds-form-element__label" >Email</label>
+                        <div class="slds-form-element__control">
+                            <ui:outputText value="{!v.acc.sfaip_fsc_dw__Email__c}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-form-element">
+                    <lightning:input required="true" label="User Name" aura:id="uname" name="uname" type="text" value="{!v.uname}" />
+
+                </div>
+
+                <div class="slds-form-element slds-is-required">
+                    <div class="slds-form-element__control">
+                        <lightning:input required="true" label="Password (Must be more than 8 characters and less than 90)" aura:id="passwd" name="passwd" type="text" value="{!v.passwd}"/>
+
+
+                    </div>
+                </div>
+                <div class="slds-form-element">
+                    <lightning:button label="Create Account" onclick="{!c.createAccount}" />
+                </div>
+            </div><!-- ./container-->
+        </aura:set>
+
+        </aura:if>
+</aura:component>

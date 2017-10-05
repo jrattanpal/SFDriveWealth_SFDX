@@ -1,0 +1,6 @@
+.idea/
+.settings/
+.sfdx/
+mdapi/
+.project
+FSCDW_SFDX1.iml

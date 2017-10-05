@@ -1,0 +1,30 @@
+{
+  "edition": "Developer",
+  "features": "API;AuthorApex;Communities;CustomApps;CustomTabs;ForceComPlatform;SalesWave",
+  "orgPreferences": {
+    "enabled": [
+      "ChatterEnabled",
+      "LoginForensicsEnabled",
+      "NetworksEnabled",
+      "IsMiddleNameEnabled",
+      "IsNameSuffixEnabled",
+      "DocumentContentSearchEnabled",
+      "OptimizeSearchForCjkEnabled",
+      "RecentlyViewedUsersForBlankLookupEnabled",
+      "SidebarAutoCompleteEnabled",
+      "SidebarDropDownListEnabled",
+      "SidebarLimitToItemsIownEnabled",
+      "SingleSearchResultShortcutEnabled",
+      "SpellCorrectKnowledgeSearchEnabled"
+    ],
+    "disabled": [
+      "IsOpportunityTeamEnabled",
+      "IsOrdersEnabled",
+      "IsExactTargetForSalesforceAppsEnabled",
+      "IsCascadeActivateToRelatedPricesEnabled",
+      "IsQuantityScheduleEnabled",
+      "IsRevenueScheduleEnabled",
+      "IsQuoteEnabled"
+    ]
+  }
+}
