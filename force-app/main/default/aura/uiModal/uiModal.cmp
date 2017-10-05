@@ -13,7 +13,7 @@
                     <span class="slds-assistive-text">Close</span>
                 </button>
                 <p class="slds-text-heading--medium">{!v.title}</p>
-                <aura:renderIf isTrue="{!v.tagline !=null && v.tagline !=''}">
+                <aura:renderIf isTrue="{!v.tagline !=null &amp;&amp; v.tagline !=''}">
                     <p class="slds-m-top--x-small">
                         <aura:unescapedHtml value="{!v.tagline}"/>
                     </p>
