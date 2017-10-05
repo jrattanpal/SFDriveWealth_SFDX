@@ -140,5 +140,4 @@ public with sharing class DataQuery {
         }
         return dwOrder;
     }
-    /**/
 }

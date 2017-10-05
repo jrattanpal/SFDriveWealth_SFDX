@@ -366,5 +366,4 @@ private class DriveWealth_Test {
 
         System.assertEquals(401, res.code);
     }
-    /**/
 }

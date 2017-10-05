@@ -120,6 +120,5 @@ private class DWCreateOrder_Controller_Test {
         System.assertEquals(1, a.DW_Accounts__r.size());
     }
 
-    /**/
 
 }
