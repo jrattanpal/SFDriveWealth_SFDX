@@ -1,4 +1,4 @@
-<aura:component access="global" >
+<aura:component access="global">
     <aura:handler event="c:uiModalShowEvent" action="{!c.showModal}"/>
     <aura:attribute name="title" type="String" access="private" description="Modal Title" default="Modal Title"/>
     <aura:attribute name="tagline" type="String" access="private" description="Modal Tagline"/>
