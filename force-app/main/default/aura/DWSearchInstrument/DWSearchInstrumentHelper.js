@@ -52,6 +52,8 @@
                         );
 
                         component.find('utils').createComponents(message, component.find('uiMessage'));
+                        
+                        component.set('v.instrumentList', null);
                     }else{
 
                         component.set('v.instrumentList', data.output);
