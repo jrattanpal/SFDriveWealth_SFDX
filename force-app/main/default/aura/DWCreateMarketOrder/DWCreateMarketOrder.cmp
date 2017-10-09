@@ -38,7 +38,7 @@
     <ui:button label="test" press="{!c.test}" />
 -->
 
-    <div class="slds">
+    <div  class="slds-box slds-theme_default">
         <lightning:card >
             <aura:set attribute="title">
                 Create Practice Order
