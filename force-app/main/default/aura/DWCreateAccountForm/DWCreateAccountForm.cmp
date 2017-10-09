@@ -1,4 +1,4 @@
-<aura:component description="DWCreateAccountForm" implements="flexipage:availableForAllPageTypes,force:hasRecordId"  access="global">
+<aura:component description="DWCreateAccountForm" implements="flexipage:availableForAllPageTypes,force:hasRecordId, forceCommunity:availableForAllPageTypes"  access="global">
 
     <!-- Workaround for strange bug where related records are not loaded the first time -->
     <!-- https://org62.lightning.force.com/one/one.app#/sObject/0D50M000032hJOwSAM/view-->

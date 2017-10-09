@@ -1,4 +1,4 @@
-<aura:component description="DWOrderStatus" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+<aura:component description="DWOrderStatus" implements="flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes" access="global">
     <!-- debug Apex code -->
     <aura:attribute name="debug" type="Boolean" default="false" access="global"/>
     <aura:attribute name="debugClient" type="Boolean" default="false" access="global" />
