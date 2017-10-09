@@ -1,4 +1,4 @@
-<aura:component description="DWOrderStatus" implements="flexipage:availableForRecordHome,force:hasRecordId, forceCommunity:availableForAllPageTypes" access="global">
+<aura:component description="DWOrderStatus" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
     <!-- debug Apex code -->
     <aura:attribute name="debug" type="Boolean" default="false" access="global"/>
     <aura:attribute name="debugClient" type="Boolean" default="false" access="global" />
@@ -34,14 +34,14 @@
                     }" />
 
 
-    <div class="slds">
+    <div class="slds-box slds-theme_default">
         <lightning:card >
             <aura:set attribute="title">
                 Order List
             </aura:set>
             <aura:set attribute="actions">
             </aura:set>
-            <p class="slds-p-horizontal--small">
+            <p class="slds-p-horizontal_small">
                 List of all orders created for current account
             </p>
         </lightning:card>
@@ -49,7 +49,7 @@
         <div aura:id="uiMessage"></div>
 
         <aura:if isTrue="{!v.orders.length > 0}">
-            <table class="slds-table slds-table--bordered slds-table--fixed-layout" role="grid">
+            <table class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_striped">
                 <thead>
                 <tr class="slds-line-height--reset">
                     <th scope="col" >
