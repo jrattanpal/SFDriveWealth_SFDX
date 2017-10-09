@@ -32,7 +32,7 @@
 
                     var orders = [], key;
                     for ( key in data.output ) {
-                        data.output[key].sfaip_fsc_dw__Executed_When__c = helper.dateFromSpecialString(data.output[key].sfaip_fsc_dw__Executed_When__c);
+                        data.output[key].Executed_When__c = helper.dateFromSpecialString(data.output[key].Executed_When__c);
                         orders.push({value:data.output[key], key:key});
                     }
                     component.find('utils').log('DWOrderStatus.orders: ', orders);
@@ -85,8 +85,8 @@
 
 
                     var orders = component.get('v.orders');
-                    orders[orderIndex].value.sfaip_fsc_dw__Order_Status__c = data.output.ordStatus;
-                    orders[orderIndex].value.sfaip_fsc_dw__Executed_When__c = data.output.executedWhen;
+                    orders[orderIndex].value.Order_Status__c = data.output.ordStatus;
+                    orders[orderIndex].value.Executed_When__c = data.output.executedWhen;
                     component.set('v.orders', orders);
 
                     component.find('utils').destroyComponents(component.find('uiMessage'));

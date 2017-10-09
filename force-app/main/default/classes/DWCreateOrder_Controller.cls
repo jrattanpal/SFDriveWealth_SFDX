@@ -95,7 +95,7 @@ public with sharing class DWCreateOrder_Controller  extends ETLC_ApexBridge_Abst
             Util.log('DWCreateOrder_Controller.submitOrder():orderInfo: ' + orderInfo);
             Util.log('DWCreateOrder_Controller.submitOrder():instrument: ' + instrument);
 
-            DW_Account__c dwAccount = DataQuery.getDWAccount((Id) orderInfo.get('sfaip_fsc_dw__DW_Account__c'));
+            DW_Account__c dwAccount = DataQuery.getDWAccount((Id) orderInfo.get('DW_Account__c'));
             Util.log('DWCreateOrder_Controller.submitOrder():dwAccount: ' + dwAccount);
 
 
@@ -107,10 +107,10 @@ public with sharing class DWCreateOrder_Controller  extends ETLC_ApexBridge_Abst
             orderInfoToPlaceOrder.put('userID', dwAccount.Account__r.DW_User_ID__c);
             orderInfoToPlaceOrder.put('accountType', dwAccount.Account_Type__c);
             orderInfoToPlaceOrder.put('instrumentID', instrument.instrumentID);
-            orderInfoToPlaceOrder.put('ordType', orderInfo.get('sfaip_fsc_dw__Order_Type__c'));
-            orderInfoToPlaceOrder.put('side', orderInfo.get('sfaip_fsc_dw__Side__c'));
-            orderInfoToPlaceOrder.put('orderQty', Double.valueOf(orderInfo.get('sfaip_fsc_dw__Order_Quantity__c')));
-            orderInfoToPlaceOrder.put('comment', orderInfo.get('sfaip_fsc_dw__Comment__c'));
+            orderInfoToPlaceOrder.put('ordType', orderInfo.get('Order_Type__c'));
+            orderInfoToPlaceOrder.put('side', orderInfo.get('Side__c'));
+            orderInfoToPlaceOrder.put('orderQty', Double.valueOf(orderInfo.get('Order_Quantity__c')));
+            orderInfoToPlaceOrder.put('comment', orderInfo.get('Comment__c'));
 
 
             Util.log('DWCreateOrder_Controller.submitOrder():orderInfoToPlaceOrder: ' + orderInfoToPlaceOrder);
@@ -124,7 +124,7 @@ public with sharing class DWCreateOrder_Controller  extends ETLC_ApexBridge_Abst
                 //If code is null then it means call was succesfull and there was no error
                 if(retVal.code == null) {
                     DW_Order__c dwOrder = new DW_Order__c();
-                    dwOrder.Comment__c = (String)orderInfo.get('sfaip_fsc_dw__Comment__c');
+                    dwOrder.Comment__c = (String)orderInfo.get('Comment__c');
                     dwOrder.DW_Account__c = dwAccount.Id;
                     dwOrder.Order_ID__c = retVal.orderID;
                     dwOrder.Order_Quantity__c = retVal.leavesQty;

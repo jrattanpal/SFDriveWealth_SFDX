@@ -16,7 +16,7 @@
 
 
                 var noAccountMsg = component.find('noAccountMsg');
-                if($A.util.isUndefined(acc) || $A.util.isUndefined(acc.sfaip_fsc_dw__DW_Accounts__r)){
+                if($A.util.isUndefined(acc) || $A.util.isUndefined(acc.DW_Accounts__r)){
                     $A.util.removeClass(noAccountMsg, 'slds-hide');
                     $A.util.addClass(noAccountMsg, 'slds-show');
                 }else{
@@ -76,7 +76,7 @@
                     instrument: component.get('v.instrument'),
                     acc: component.get('v.acc'),
                     //Workaround for strange bug where related records are not loaded the first time
-                    dwAccRecords: acc.sfaip_fsc_dw__DW_Accounts__r.records
+                    dwAccRecords: acc.DW_Accounts__r.records
                     //Workaround
                 }
             ]

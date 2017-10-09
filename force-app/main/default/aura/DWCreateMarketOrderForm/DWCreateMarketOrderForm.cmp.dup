@@ -28,11 +28,11 @@
     <aura:attribute name="dworder" type="DW_Order__c" access="public"
                     default="{
                         'sobjectType': 'DW_Order__c',
-                        'sfaip_fsc_dw__Order_Type__c': '1',
-                        'sfaip_fsc_dw__DW_Account__c': '',
-                        'sfaip_fsc_dw__Side__c': 'B',
-                        'sfaip_fsc_dw__Order_Quantity__c': 0,
-                        'sfaip_fsc_dw__Comment__c': ''
+                        'Order_Type__c': '1',
+                        'DW_Account__c': '',
+                        'Side__c': 'B',
+                        'Order_Quantity__c': 0,
+                        'Comment__c': ''
                     }"  />
 
     <!--Setup initial information for creating a market order-->
@@ -58,7 +58,7 @@
         </div>
         <div class="slds-form-element slds-is-required">
             <div class="slds-form-element__control">
-                <lightning:select aura:id="ordType" name="ordType" label="Order Type" required="true" value="{!v.dworder.sfaip_fsc_dw__Order_Type__c}">
+                <lightning:select aura:id="ordType" name="ordType" label="Order Type" required="true" value="{!v.dworder.Order_Type__c}">
                     <option value="1">Market Order</option>
                 </lightning:select>
             </div>
@@ -67,7 +67,7 @@
         <div class="slds-form-element slds-is-required">
             <div class="slds-form-element__control">
                 <lightning:select aura:id="accountID" name="accountID" label="Select DriveWealth Account" required="true"
-                                  value="{!v.dworder.sfaip_fsc_dw__DW_Account__c}"
+                                  value="{!v.dworder.DW_Account__c}"
                                   messageWhenValueMissing="Please select an Account!">
                     <option value="">Select an Account</option>
                     <aura:iteration items="{!v.dwAccRecords}" var="obj">
@@ -78,7 +78,7 @@
         </div>
         <div class="slds-form-element slds-is-required">
             <div class="slds-form-element__control">
-                <lightning:select aura:id="side" name="side" label="Side of Order:" required="true" value="{!v.dworder.sfaip_fsc_dw__Side__c}">
+                <lightning:select aura:id="side" name="side" label="Side of Order:" required="true" value="{!v.dworder.Side__c}">
                     <option value="B">Buy</option>
                     <option value="S">Sell</option>
                 </lightning:select>
@@ -87,14 +87,14 @@
         <div class="slds-form-element">
             <div class="slds-form-element__control">
                 <lightning:input label="Quantity" aura:id="orderQty" name="orderQty" type="number" required="true"
-                                 value="{!v.dworder.sfaip_fsc_dw__Order_Quantity__c}"
+                                 value="{!v.dworder.Order_Quantity__c}"
                                  messageWhenBadInput="Please enter a number"
                 />
             </div>
         </div>
         <div class="slds-form-element">
             <div class="slds-form-element__control">
-                <lightning:input label="Comment" aura:id="comment" name="comment" type="text" value="{!v.dworder.sfaip_fsc_dw__Comment__c}" />
+                <lightning:input label="Comment" aura:id="comment" name="comment" type="text" value="{!v.dworder.Comment__c}" />
             </div>
         </div>
         <div class="slds-form-element">

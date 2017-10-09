@@ -45,7 +45,7 @@
     
     <div class="slds-box slds-theme_default">
         <!-- Input Form using components -->
-        <aura:if isTrue="{!v.acc.sfaip_fsc_dw__DW_Accounts__r}">
+        <aura:if isTrue="{!v.acc.DW_Accounts__r}">
             <lightning:card >
                 <aura:set attribute="title">
                     Drive Wealth Account Details
@@ -67,13 +67,13 @@
         
         
         <!-- Input Form using components -->
-        <aura:if isTrue="{!v.acc.sfaip_fsc_dw__DW_Accounts__r}">
+        <aura:if isTrue="{!v.acc.DW_Accounts__r}">
             <div   aura:id="showAccountForm">
                 <div class="slds-form-element slds-is-required">
                     <div class="slds-form-element__control">
                         <label class="slds-form-element__label" >DW Account Name</label>
                         <div class="slds-form-element__control">
-                            <ui:outputText value="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records[0].Name}" />
+                            <ui:outputText value="{!v.acc.DW_Accounts__r.records[0].Name}" />
                             
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="slds-form-element__control">
                         <label class="slds-form-element__label" >DW Account Number</label>
                         <div class="slds-form-element__control">
-                            <ui:outputText value="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records[0].sfaip_fsc_dw__Account_No__c}" />
+                            <ui:outputText value="{!v.acc.DW_Accounts__r.records[0].Account_No__c}" />
                             
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         <label class="slds-form-element__label" >DW Account Type</label>
                         <div class="slds-form-element__control">
                             
-                            <aura:If isTrue="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records[0].sfaip_fsc_dw__Account_Type__c==1}">
+                            <aura:If isTrue="{!v.acc.DW_Accounts__r.records[0].Account_Type__c==1}">
                                 <ui:outputText value="Practice Account" />
                                 
                             </aura:If>
@@ -104,7 +104,7 @@
                     <div class="slds-form-element__control">
                         <label class="slds-form-element__label" >When was this created</label>
                         <div class="slds-form-element__control">
-                            <ui:outputText value="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records[0].sfaip_fsc_dw__Created_When__c}" />
+                            <ui:outputText value="{!v.acc.DW_Accounts__r.records[0].Created_When__c}" />
                             
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                         <div class="slds-form-element__control">
                             <label class="slds-form-element__label" >Email</label>
                             <div class="slds-form-element__control">
-                                <ui:outputText value="{!v.acc.sfaip_fsc_dw__Email__c}" />
+                                <ui:outputText value="{!v.acc.Email__c}" />
                             </div>
                         </div>
                     </div>
