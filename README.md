@@ -6,13 +6,15 @@ DF
 
 1. Install Salesforce DX. Enable the Dev Hub in your org or sign up for a Dev Hub trial org and install the Salesforce DX CLI. Follow the instructions in the Salesforce DX Setup Guide or in the App Development with Salesforce DX Trailhead module.
 
-1. Clone the **SFDriveWealth_SFDX** repository:
+2. Clone the **SFDriveWealth_SFDX** repository, switch the branch to work on a specific branch (if needed):
     ```
     git clone https://github.com/jrattanpal/SFDriveWealth_SFDX
-    cd SFDriveWealth_SFDX_
+    cd SFDriveWealth_SFDX
+    
+    git checkout DFSession2017
     ```
 
-1. Create a scratch org and provide it with an alias (dh):
+3. Create a scratch org and provide it with an alias (dh):
     ```
     sfdx force:org:create -s -f config/FSCDW_SFDX-scratch-def.json -a dh
     ```
