@@ -38,14 +38,14 @@
     <ui:button label="test" press="{!c.test}" />
 -->
 
-    <div class="slds">
+    <div  class="slds-box slds-theme_default">
         <lightning:card >
             <aura:set attribute="title">
                 Create Practice Order
             </aura:set>
             <aura:set attribute="actions">
                 <!-- Show search button only if there is a DW account -->
-                <aura:if isTrue="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records }" >
+                <aura:if isTrue="{!v.acc.DW_Accounts__r.records }" >
                     <lightning:button label="Start Again" onclick="{!c.searchSymbol}"/>
                 </aura:if>
             </aura:set>
@@ -55,7 +55,7 @@
         </lightning:card>
 
         <!-- If this account has DW_Account (i.e. corresponding account in DriveWealth for trading) ONLY THEN show forms for serach and create order -->
-        <aura:if isTrue="{!v.acc.sfaip_fsc_dw__DW_Accounts__r.records }" >
+        <aura:if isTrue="{!v.acc.DW_Accounts__r.records }" >
             <!-- DWSearchInstrument component to search symbol -->
             <!-- helper.showSearchSymbolForm() is responsible to add content here; onInit and on button click -->
             <!-- It's done dynamically (with createComponent()) so we can destroy it if needed -->

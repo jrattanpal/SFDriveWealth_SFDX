@@ -29,9 +29,6 @@
                 </aura:if>
             </div>
         </th>
-        <th scope="col" data-label="{!v.data.category}">
-            <div class="slds-truncate" title="{!v.data.category}">{!v.data.category} </div>
-        </th>
         <th scope="col" data-label="{!v.data.rateAsk}">
             <div class="slds-truncate" title="{!v.data.rateAsk}">{!v.data.rateAsk} </div>
         </th>

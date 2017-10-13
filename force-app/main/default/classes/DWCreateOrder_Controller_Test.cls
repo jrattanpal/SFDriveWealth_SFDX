@@ -46,11 +46,11 @@ private class DWCreateOrder_Controller_Test {
         DW_Account__c dwAccount = [SELECT Id, Account_No__c from DW_Account__c where Account__c=:acc.Id];
 
         Map<String, Object> orderInfo = new Map<String,Object>();
-        orderInfo.put('sfaip_fsc_dw__DW_Account__c', dwAccount.Id);
-        orderInfo.put('sfaip_fsc_dw__Order_Type__c', 1);
-        orderInfo.put('sfaip_fsc_dw__Side__c', 'B' );
-        orderInfo.put('sfaip_fsc_dw__Order_Quantity__c', 11);
-        orderInfo.put('sfaip_fsc_dw__Comment__c', '');
+        orderInfo.put('DW_Account__c', dwAccount.Id);
+        orderInfo.put('Order_Type__c', 1);
+        orderInfo.put('Side__c', 'B' );
+        orderInfo.put('Order_Quantity__c', 11);
+        orderInfo.put('Comment__c', '');
 
         DriveWealthJsonInstrument instrument = new DriveWealthJsonInstrument();
         instrument.instrumentID = 'IDID';

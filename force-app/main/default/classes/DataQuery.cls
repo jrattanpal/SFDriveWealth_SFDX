@@ -7,6 +7,32 @@
 public with sharing class DataQuery {
 
     /**
+      * Return User information for current logged in user
+      *
+      *
+      * Note: Use try/catch in calling function to trap any Exceptions
+      * This funciton can raise SFDCAccessControlException or Eception
+      *
+      * @param UserID ID for record to return
+      * @return Account
+     */
+
+    public static User getUser(ID UserId){
+
+        //CRUD/FLS check
+        Util.AccessController.assertAuthorizedToView(
+                Schema.User.getSobjectType(),
+                new List<Schema.SobjectField>{
+                        Schema.User.fields.AccountId
+                }
+        );
+
+        User u = [SELECT AccountId FROM User WHERE Id = :UserId];
+
+        return u;
+    }
+
+    /**
       * Return DriveWealth Account List created for an Account based on Account ID
       *
       *

@@ -46,22 +46,22 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>debug</name>
-                <value>false</value>
+                <value>true</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>debugClient</name>
-                <value>false</value>
+                <value>true</value>
             </componentInstanceProperties>
             <componentName>DWCreateMarketOrder</componentName>
         </componentInstances>
         <componentInstances>
             <componentInstanceProperties>
                 <name>debug</name>
-                <value>false</value>
+                <value>true</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>debugClient</name>
-                <value>false</value>
+                <value>true</value>
             </componentInstanceProperties>
             <componentName>DWOrderList</componentName>
         </componentInstances>
@@ -137,22 +137,22 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>debug</name>
-                <value>false</value>
+                <value>true</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>debugClient</name>
-                <value>false</value>
+                <value>true</value>
             </componentInstanceProperties>
             <componentName>DWSearchInstrument</componentName>
         </componentInstances>
         <componentInstances>
             <componentInstanceProperties>
                 <name>debug</name>
-                <value>false</value>
+                <value>true</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>debugClient</name>
-                <value>false</value>
+                <value>true</value>
             </componentInstanceProperties>
             <componentName>DWCreateAccountForm</componentName>
         </componentInstances>

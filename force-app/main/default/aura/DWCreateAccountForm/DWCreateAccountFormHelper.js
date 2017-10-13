@@ -6,7 +6,7 @@
         var lname = component.get('v.lname');
         var uname= component.get('v.uname');
         var passwd = component.get('v.passwd');
-        var email = component.get('v.acc').sfaip_fsc_dw__Email__c;
+        var email = component.get('v.acc').Email__c;
 
         //If account is not selected then show an error
             if($A.util.isEmpty(fname)) {
@@ -102,7 +102,7 @@
 
                     var message = Array();
 
-                    if(output==null || $A.util.isUndefined(output) || $A.util.isUndefined(output.sfaip_fsc_dw__DW_Accounts__r)){
+                    if(output==null || $A.util.isUndefined(output) || $A.util.isUndefined(output.DW_Accounts__r)){
 
                         var msg = (typeof(data.messages.Errors) != 'undefined' && typeof(data.messages.Errors[0]) != 'undefined')?data.messages.Errors[0]:'';
                         message.push(
