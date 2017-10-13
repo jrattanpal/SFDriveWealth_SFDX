@@ -47,16 +47,16 @@ DF
     ```
 2. Convert this DX project to regular salesforce metadata which will be saved in mdapioutput folder
     ```
-    _cd project_
+    cd project
     
-    _mkdir mdapioutput_
+    mkdir mdapioutput
     
-    _sfdx force:source:convert -d mdapioutput/_
+    sfdx force:source:convert -d mdapioutput/
     ```
 
 3. Deploy converted project to your regular salesforce org (that you authenticated in first step)
     ``` 
-    _sfdx force:mdapi:deploy -d mdapioutput/ -u NEW_ALIAS -w 100_
+    sfdx force:mdapi:deploy -d mdapioutput/ -u NEW_ALIAS -w 100
     ```
 
 
