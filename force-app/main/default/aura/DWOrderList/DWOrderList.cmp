@@ -1,5 +1,6 @@
 <aura:component description="DWOrderStatus" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
     <!-- debug Apex code -->
+
     <aura:attribute name="debug" type="Boolean" default="false" access="global"/>
     <aura:attribute name="debugClient" type="Boolean" default="false" access="global" />
     <!-- If component is loaded from community then set this to true -->
@@ -47,7 +48,7 @@
             <aura:set attribute="actions">
             </aura:set>
             <p class="slds-p-horizontal_small">
-                List of all orders created for current account
+                List of all DriveWealth orders
             </p>
         </lightning:card>
         <!-- ui:message will added in this div via createComponents() -->
@@ -56,33 +57,35 @@
         <aura:if isTrue="{!v.orders.length > 0}">
             <table class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_striped">
                 <thead>
-                <tr class="slds-line-height--reset">
-                    <aura:if isTrue="{!v.isCommunity == false}">
-                        <th scope="col" >
-                            <div class="slds-th__action slds-th__action--form">
-                                Fetch Status
-                            </div>
+                    <tr class="slds-line-height--reset">
+                        <aura:if isTrue="{!v.isCommunity == false}">
+                            <th scope="col" >
+                                <div class="slds-th__action slds-th__action--form">
+                                    Fetch Status
+                                </div>
+                            </th>
+                        </aura:if>
+                        <th class="slds-text-title_caps" scope="col">
+                            Status
                         </th>
-                    </aura:if>
-                    <th class="slds-text-title--caps" scope="col">
-                        Status
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        Exec Date
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        QTY
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        Symbol
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        Buy/Sell
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        DW Account
-                    </th>
-                </tr>
+                        <th class="slds-text-title_caps" scope="col">
+                            Exec Date
+                        </th>
+                        <th class="slds-text-title_caps" scope="col">
+                            QTY
+                        </th>
+                        <th class="slds-text-title_caps" scope="col">
+                            Symbol
+                        </th>
+                        <th class="slds-text-title_caps" scope="col">
+                            Buy/Sell
+                        </th>
+                        <!--
+                        <th class="slds-text-title_caps" scope="col">
+                            DW Account
+                        </th>
+                        -->
+                    </tr>
                 </thead>
 
                 <tbody>
@@ -118,11 +121,13 @@
                                     {!obj.value.Order_Quantity__c}
                             </div>
                         </th>
+                        <!--
                         <th scope="col" data-label="{!obj.value.DW_Account__r.Name}">
                             <div class="slds-truncate" title="{!obj.value.DW_Account__r.Name}">
                                 <ui:outputURL value="{! '/' + obj.value.DW_Account__c}" label="{!obj.value.DW_Account__r.Name}"/>
                             </div>
                         </th>
+                        -->
                     </tr>
                 </aura:iteration>
                 </tbody>

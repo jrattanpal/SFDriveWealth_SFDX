@@ -30,7 +30,7 @@
         </aura:if>
 
         <aura:if isTrue="{!v.componentToLoad == 'List DW Orders'}">
-            <c:DWOrderList debug="{!v.debug}" debugClient="{!v.debugClient}" recordId="{!v.AccountId}" />
+            <c:DWOrderList isCommunity="{!v.isCommunity}" debug="{!v.debug}" debugClient="{!v.debugClient}" recordId="{!v.AccountId}" />
         </aura:if>
         <aura:set attribute="else">
             Current user might not be a contact or not associated to an account to show "{!v.componentToLoad}" component

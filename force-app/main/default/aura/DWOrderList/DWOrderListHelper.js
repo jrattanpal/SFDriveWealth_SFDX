@@ -86,7 +86,7 @@
 
                     var orders = component.get('v.orders');
                     orders[orderIndex].value.Order_Status__c = data.output.ordStatus;
-                    orders[orderIndex].value.Executed_When__c = data.output.executedWhen;
+                    orders[orderIndex].value.Executed_When__c = (data.output.Executed_When__c == 'Not Executed')?'':helper.dateFromSpecialString(data.output.Executed_When__c);
                     component.set('v.orders', orders);
 
                     component.find('utils').destroyComponents(component.find('uiMessage'));
