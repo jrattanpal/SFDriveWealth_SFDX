@@ -1,6 +1,7 @@
 {
   "orgName": "FSC Drive Wealth",
   "edition": "Developer",
+  "hasSampleData": true,
   "features": "API;AuthorApex;Communities;CustomApps;CustomTabs;ForceComPlatform;SalesWave",
   "orgPreferences": {
     "enabled": [

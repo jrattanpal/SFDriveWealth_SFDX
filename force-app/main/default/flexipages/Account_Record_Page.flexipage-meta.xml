@@ -63,6 +63,10 @@
                 <name>debugClient</name>
                 <value>true</value>
             </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>isCommunity</name>
+                <value>false</value>
+            </componentInstanceProperties>
             <componentName>DWOrderList</componentName>
         </componentInstances>
         <name>facet-5c5e043d-049c-420c-9e6c-91ef43d6f564</name>
@@ -72,7 +76,7 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>active</name>
-                <value>true</value>
+                <value>false</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>body</name>
@@ -85,6 +89,10 @@
             <componentName>flexipage:tab</componentName>
         </componentInstances>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>active</name>
+                <value>true</value>
+            </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>body</name>
                 <value>detailTabContent</value>

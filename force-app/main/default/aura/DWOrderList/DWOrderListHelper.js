@@ -16,7 +16,7 @@
 
 
                 if($A.util.isUndefined(data.output) || data.output.length <=0){
-                    
+
                     var message = Array();
                     message.push(
                         ["ui:message", {
@@ -32,7 +32,7 @@
 
                     var orders = [], key;
                     for ( key in data.output ) {
-                        data.output[key].Executed_When__c = helper.dateFromSpecialString(data.output[key].Executed_When__c);
+                        data.output[key].Executed_When__c = (data.output[key].Executed_When__c == 'Not Executed')?'':helper.dateFromSpecialString(data.output[key].Executed_When__c);
                         orders.push({value:data.output[key], key:key});
                     }
                     component.find('utils').log('DWOrderStatus.orders: ', orders);
@@ -86,7 +86,7 @@
 
                     var orders = component.get('v.orders');
                     orders[orderIndex].value.Order_Status__c = data.output.ordStatus;
-                    orders[orderIndex].value.Executed_When__c = data.output.executedWhen;
+                    orders[orderIndex].value.Executed_When__c = (data.output.Executed_When__c == 'Not Executed')?'':helper.dateFromSpecialString(data.output.Executed_When__c);
                     component.set('v.orders', orders);
 
                     component.find('utils').destroyComponents(component.find('uiMessage'));

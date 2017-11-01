@@ -6,10 +6,10 @@
         var lname = component.get('v.lname');
         var uname= component.get('v.uname');
         var passwd = component.get('v.passwd');
-        var email = component.get('v.acc').Email__c;
+        var email = component.get('v.simpleRecord').Email__c;
 
         //If account is not selected then show an error
-            if($A.util.isEmpty(fname)) {
+        if($A.util.isEmpty(fname)) {
             message.push(
                 ["markup://ui:message", {
                     'severity': 'error',

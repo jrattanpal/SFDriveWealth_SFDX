@@ -1,9 +1,15 @@
 <aura:component description="DWOrderStatus" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
     <!-- debug Apex code -->
+
     <aura:attribute name="debug" type="Boolean" default="false" access="global"/>
     <aura:attribute name="debugClient" type="Boolean" default="false" access="global" />
+    <!-- If component is loaded from community then set this to true -->
+    <aura:attribute name="isCommunity" type="Boolean" default="false" />
+
     <!-- Salesforce Account where we are placing this component -->
     <aura:attribute type="ID" name="recordId" access="global"/>
+
+
 
     <!-- For using ApexBridge Library -->
     <c:ETLC_ApexBridge aura:id="ApexBridge" debugServer="{!v.debug}" debugClient="{!v.debugClient}"/>
@@ -42,7 +48,7 @@
             <aura:set attribute="actions">
             </aura:set>
             <p class="slds-p-horizontal_small">
-                List of all orders created for current account
+                List of all DriveWealth orders
             </p>
         </lightning:card>
         <!-- ui:message will added in this div via createComponents() -->
@@ -51,77 +57,77 @@
         <aura:if isTrue="{!v.orders.length > 0}">
             <table class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_striped">
                 <thead>
-                <tr class="slds-line-height--reset">
-                    <th scope="col" >
-                        <div class="slds-th__action slds-th__action--form">
-                            Fetch Status
-                        </div>
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        Status
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        Exec Date
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        QTY
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        DW Account
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        Symbol
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        Buy/Sell
-                    </th>
-                    <th class="slds-text-title--caps" scope="col">
-                        Created Date
-                    </th>
-                </tr>
+                    <tr class="slds-line-height--reset">
+                        <aura:if isTrue="{!v.isCommunity == false}">
+                            <th scope="col" >
+                                <div class="slds-th__action slds-th__action--form">
+                                    Fetch Status
+                                </div>
+                            </th>
+                        </aura:if>
+                        <th class="slds-text-title_caps" scope="col">
+                            Status
+                        </th>
+                        <th class="slds-text-title_caps" scope="col">
+                            Exec Date
+                        </th>
+                        <th class="slds-text-title_caps" scope="col">
+                            QTY
+                        </th>
+                        <th class="slds-text-title_caps" scope="col">
+                            Symbol
+                        </th>
+                        <th class="slds-text-title_caps" scope="col">
+                            Buy/Sell
+                        </th>
+                        <!--
+                        <th class="slds-text-title_caps" scope="col">
+                            DW Account
+                        </th>
+                        -->
+                    </tr>
                 </thead>
 
                 <tbody>
                 <aura:iteration items="{!v.orders}" var="obj" indexVar="key">
-                      <tr>
-                        <th scope="col" data-label="Update Status">
+                    <tr>
+                        <aura:if isTrue="{!v.isCommunity == false}">
+                            <th scope="col" data-label="Update Status">
                                 <div class="slds-truncate" title="Fetch Status">
-                                        <lightning:button label="Fetch Status" value="{!key}" onclick="{!c.fetchStatus}"/>
+                                    <lightning:button label="Fetch Status" value="{!key}" onclick="{!c.fetchStatus}"/>
                                 </div>
-                        </th>
+                            </th>
+                        </aura:if>
                         <th scope="col" data-label="{!obj.value.Order_Status__c}">
                             <div class="slds-truncate" title="{!obj.value.Order_Status__c}">
                                     {!obj.value.Order_Status__c}
                             </div>
                         </th>
-                          <td role="gridcell">
+                        <td role="gridcell">
                             <div class="slds-truncate" title="{!obj.value.Executed_When__c}">
                                     {!obj.value.Executed_When__c}
                             </div>
                         </td>
-                        <th scope="col" data-label="{!obj.value.Order_Quantity__c}">
-                            <div class="slds-truncate" title="{!obj.value.Order_Quantity__c}">
-                                {!obj.value.Order_Quantity__c}
-                            </div>
-                        </th>
-                        <th scope="col" data-label="{!obj.value.DW_Account__r.Name}">
-                            <div class="slds-truncate" title="{!obj.value.DW_Account__r.Name}">
-                                    <ui:outputURL value="{! '/' + obj.value.DW_Account__c}" label="{!obj.value.DW_Account__r.Name}"/>
-                            </div>
-                        </th>
                         <th scope="col" data-label="{!obj.value.Instrument_Symbol__c}">
                             <div class="slds-truncate" title="{!obj.value.Instrument_Symbol__c}">
-                                {!obj.value.Instrument_Symbol__c}
+                                    {!obj.value.Instrument_Symbol__c}
                             </div>
                         </th>
                         <th scope="col" data-label="{!obj.value.Side__c}">
                             <div class="slds-truncate" title="{!obj.value.Side__c}">{!obj.value.Side__c}</div>
                         </th>
-                        <th scope="col" data-label="{!obj.value.CreatedDate}">
-                            <div class="slds-truncate" title="{!obj.value.CreatedDate}">
-                                <ui:outputDate value="{!obj.value.CreatedDate}"/>
+                        <th scope="col" data-label="{!obj.value.Order_Quantity__c}">
+                            <div class="slds-truncate" title="{!obj.value.Order_Quantity__c}">
+                                    {!obj.value.Order_Quantity__c}
                             </div>
                         </th>
+                        <!--
+                        <th scope="col" data-label="{!obj.value.DW_Account__r.Name}">
+                            <div class="slds-truncate" title="{!obj.value.DW_Account__r.Name}">
+                                <ui:outputURL value="{! '/' + obj.value.DW_Account__c}" label="{!obj.value.DW_Account__r.Name}"/>
+                            </div>
+                        </th>
+                        -->
                     </tr>
                 </aura:iteration>
                 </tbody>
